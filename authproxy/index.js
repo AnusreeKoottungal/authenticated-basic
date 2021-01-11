@@ -1,9 +1,11 @@
 const port = process.env.PORT || 3000;
 const express = require('express');
+const override = require('method-override');
 //const bodyParser = require('body-parser');
 
 const app = express();
 app.use(express.json());
+app.use(override('X-HTTP-Method-Override'));
 const USERNAME = "XOTest";
 const PASSWORD = "Welcome1";
 const employees = [
