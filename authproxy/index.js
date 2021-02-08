@@ -39,7 +39,7 @@ app.post('/employee', (req, res) => {
     if(authenticate(req, res)){
         employees.forEach((employee, index, emps) => {
             console.log([employee, index, emps]);
-            if(employee.id === req.body.id){
+            if(employee.id !== null &&  employee.id !== undefined && employee.id !== '' && employee.id === req.body.id){
                 res.status(400);
                 res.send('Another employee exists for the same id');
             } else if(index === emps.length-1){
