@@ -9,10 +9,11 @@ app.use(override('X-HTTP-Method-Override'));
 const USERNAME = "XOTest";
 const PASSWORD = "Welcome1";
 const employees = [
-    { id: 2, name: 'employee2' },
+
     { id: 1, name: 'employee1' },
-    { id: 4, name: 'employee4' },
-    { id: 3, name: 'employee3' }
+    { id: 2, name: 'employee2' },
+    { id: 3, name: 'employee3' },
+    { id: 4, name: 'employee4' }
   ];
 
 app.get('/employee', (req, res) => {
