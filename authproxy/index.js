@@ -43,7 +43,6 @@ app.post('/employee', (req, res) => {
                 res.status(400);
                 res.send('Another employee exists for the same id');
             } else if(index === emps.length-1){
-                console.log('match not found');
                 employees.push(req.body);
                 res.json(employees[index+1]);
             }
