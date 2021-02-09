@@ -27,7 +27,7 @@ app.get('/employee/:id', (req, res) => {
     if(authenticate(req, res)){
         employees.forEach((employee, index, emps) => {
             console.log([employee, index, emps]);
-            if(employee.id.toString() === req.params.id){
+            if(employee.id.toString() === req.params.id.toString()){
                 res.json(employee);
             } else if(index === emps.length-1){
                 res.status(404);
@@ -40,7 +40,7 @@ app.post('/employee', (req, res) => {
     if(authenticate(req, res)){
         employees.forEach((employee, index, emps) => {
             console.log([employee, index, emps]);
-            if(employee.id !== null &&  employee.id !== undefined && employee.id !== '' && employee.id === req.body.id){
+            if(employee.id !== null &&  employee.id !== undefined && employee.id !== '' && employee.id.toString() === req.body.id.toString()){
                 res.status(400);
                 res.send('Another employee exists for the same id');
             } else if(index === emps.length-1){
@@ -55,7 +55,7 @@ app.patch('/employee/:id', (req, res) => {
     if(authenticate(req, res)){
         employees.forEach((employee, index, emps) => {
             console.log([employee, index, emps]);
-            if(employee.id.toString() === req.params.id){
+            if(employee.id.toString() === req.params.id.toString()){
                 employee.name = req.body.name;
                 res.json(employee);
             } else if(index === emps.length-1){
@@ -70,10 +70,11 @@ app.put('/employee', (req, res) => {
     if(authenticate(req, res)){
         employees.forEach((employee, index, emps) => {
             console.log([employee, index, emps]);
-            if(employee.id === req.body.id){
+            if(employee.id.toString() === req.body.id.toString()){
                 console.log('match found');
                 employee.name = req.body.name;
                 res.json(employee);
+                break;
             } else if(index === emps.length-1){
                 console.log('match not found');
                 employees.push(req.body);
@@ -89,7 +90,7 @@ app.delete('/employee/:id', (req, res) => {
         const matchfound = 0;
         employees.forEach((employee, index, emps) => {
             console.log([employee, index, emps]);
-            if(employee.id.toString() === req.params.id){
+            if(employee.id.toString() === req.params.id.toString()){
                 console.log('match found!');
                 emps.splice(index,1);
                 res.status(204);
