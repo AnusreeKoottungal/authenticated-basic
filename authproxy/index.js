@@ -43,7 +43,7 @@ app.post('/employee', (req, res) => {
             if(employee.id !== null &&  employee.id !== undefined && employee.id !== '' && employee.id === req.body.id){
                 res.status(400);
                 res.send('Another employee exists for the same id');
-            } else if(index === emps.length-1 && req.body.id && req.body.name){
+            } else if(index === emps.length-1){
                 employees.push(req.body);
                 res.json(employees[index+1]);
             }
@@ -74,7 +74,7 @@ app.put('/employee', (req, res) => {
                 console.log('match found');
                 employee.name = req.body.name;
                 res.json(employee);
-            } else if(index === emps.length-1 && req.body.id && req.body.name){
+            } else if(index === emps.length-1){
                 console.log('match not found');
                 employees.push(req.body);
                 res.json(employees[index+1]);
