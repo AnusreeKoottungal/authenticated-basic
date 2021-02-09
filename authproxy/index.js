@@ -74,7 +74,7 @@ app.put('/employee', (req, res) => {
                 console.log('match found');
                 employee.name = req.body.name;
                 res.json(employee);
-                break;
+                return;
             } else if(index === emps.length-1){
                 console.log('match not found');
                 employees.push(req.body);
