@@ -25,6 +25,7 @@ app.get('/employee', (req, res) => {
 });
 app.get('/employee/:id', (req, res) => {
     if(authenticate(req, res)){
+        console.log('redeploy');
         employees.forEach((employee, index, emps) => {
             console.log([employee, index, emps]);
             if(employee.id.toString() === req.params.id.toString()){
